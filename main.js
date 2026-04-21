@@ -157,10 +157,10 @@ async function searchAndLearn(command) {
   const query = encodeURIComponent(`how to ${command} in nodejs or python code example`);
   const url = `https://api.exa.ai/search?query=${query}&num-results=3`;
   
-  try {
-    const response = await fetch(url, {
-      headers: { 'x-api-key': process.env.EXA_API_KEY || '' }
-    });
+    try {
+      const response = await fetch(url, {
+        headers: { 'x-api-key': '90e9a1a3-bb67-4f46-9590-9320c8c621ee' }
+      });
     const data = await response.json();
     
     if (data.results && data.results.length > 0) {
