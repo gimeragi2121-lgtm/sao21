@@ -1,87 +1,71 @@
-# Active Context: Next.js Starter Template
+# Active Context: EVO-Asistente (Voice Assistant)
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ Implemented
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+Voice assistant built with Electron that uses evolutionary logic and self-programming. Learns new commands via web search and Markov chain context memory.
 
 ## Recently Completed
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
+- [x] SPEC.md created with full specification
+- [x] Electron main process (main.js) with voice recognition system
+- [x] Preload IPC bridge (preload.js)
+- [x] UI renderer (renderer/index.html)
+- [x] Dynamic skill loader with require cache clearing
+- [x] Markov chain memory system (memoria.json)
+- [x] Web search integration for learning new commands
+- [x] System control (terminal command execution)
+- [x] Auto-install for missing npm packages
+- [x] Sample skills in habilidades/
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `main.js` | Electron main process | ✅ Implemented |
+| `preload.js` | IPC bridge | ✅ Implemented |
+| `renderer/index.html` | UI | ✅ Implemented |
+| `habilidades/` | Dynamic skills folder | ✅ Implemented |
+| `memoria.json` | Markov chain memory | ✅ Implemented |
+| `SPEC.md` | Project specification | ✅ Implemented |
 
-## Current Focus
+## Key Features
 
-The template is ready. Next steps depend on user requirements:
+1. **Voice Recognition**: Web Speech API (SpeechRecognition)
+2. **Self-Learning**: Searches web, creates new skills in habilidades/
+3. **Dynamic Loading**: clearRequireCache + require() for new skills
+4. **Markov Memory**: Context prediction via word chain probabilities
+5. **System Control**: Executes cmd/bash, auto-installs packages
+6. **Python Support**: Can load .py skills via spawn
 
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+## How to Run
 
-## Quick Start Guide
-
-### To add a new page:
-
-Create a file at `src/app/[route]/page.tsx`:
-```tsx
-export default function NewPage() {
-  return <div>New page content</div>;
-}
+```bash
+bun start          #or: electron .
 ```
 
-### To add components:
+## Skill Format
 
-Create `src/components/` directory and add components:
-```tsx
-// src/components/ui/Button.tsx
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="px-4 py-2 bg-blue-600 text-white rounded">{children}</button>;
-}
+```javascript
+// habilidades/mycommand.js
+module.exports = {
+  name: "mycommand",
+  keywords: ["keyword1", "keyword2"],
+  execute: async function(input) {
+    return "result";
+  }
+};
 ```
-
-### To add a database:
-
-Follow `.kilocode/recipes/add-database.md`
-
-### To add API routes:
-
-Create `src/app/api/[route]/route.ts`:
-```tsx
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({ message: "Hello" });
-}
-```
-
-## Available Recipes
-
-| Recipe | File | Use Case |
-|--------|------|----------|
-| Add Database | `.kilocode/recipes/add-database.md` | Data persistence with Drizzle + SQLite |
 
 ## Pending Improvements
 
-- [ ] Add more recipes (auth, email, etc.)
-- [ ] Add example components
-- [ ] Add testing setup recipe
+- [ ] Add more sample skills
+- [ ] Configure EXA_API_KEY for web search
+- [ ] Add error handling improvements
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
-| Initial | Template created with base setup |
+| 2026-04-21 | EVO-Asistente project implemented |
